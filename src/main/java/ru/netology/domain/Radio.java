@@ -61,5 +61,22 @@ public class Radio {
         this.currentSound = currentSound;
     }
 
+    public int getMaxSound() {
+        return currentSound;
+    }
+
+    public void setMaxSound(int currentSound) {
+        if (currentSound == maxSound) {
+            this.currentSound = maxSound;
+            return;
+        }
+        if (currentSound > minSound) {
+            currentSound = currentSound + 1;
+        }
+        if (currentSound == minSound) {
+            currentSound = currentSound + 1;
+        }
+        this.currentSound = currentSound;
+    }
 
 }
