@@ -62,4 +62,33 @@ class RadioTest {
         assertEquals(9, radio.getMinRadioStation());
     }
 
+
+    @Test
+    public void soundPlus1 () {
+        Radio radio = new Radio();
+        assertEquals(0, radio.getMaxSound());
+
+        radio.setMaxSound(10);
+        assertEquals(10, radio.getMaxSound());
+    }
+
+    @Test
+    public void soundPlus2 () {
+        Radio radio = new Radio();
+        assertEquals(0, radio.getMaxSound());
+
+        radio.setMaxSound(0);
+        assertEquals(1, radio.getMaxSound());
+    }
+
+    @Test
+    public void soundPlus3 () {
+        Radio radio = new Radio();
+        assertEquals(0, radio.getMaxSound());
+
+        radio.setMaxSound(5);
+        assertEquals(6, radio.getMaxSound());
+    }
+
+
 }
