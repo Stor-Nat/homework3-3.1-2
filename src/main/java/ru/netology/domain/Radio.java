@@ -43,5 +43,23 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
+    public int getMinSound() {
+        return currentSound;
+    }
+
+    public void setMinSound(int currentSound) {
+        if (currentSound == minSound) {
+            this.currentSound = minSound;
+            return;
+        }
+        if (currentSound < maxSound) {
+            currentSound = currentSound - 1;
+        }
+        if (currentSound == maxSound) {
+            currentSound = currentSound - 1;
+        }
+        this.currentSound = currentSound;
+    }
+
 
 }
