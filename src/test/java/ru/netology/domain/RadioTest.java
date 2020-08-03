@@ -91,4 +91,31 @@ class RadioTest {
     }
 
 
+    @Test
+    public void soundMinus1() {
+        Radio radio = new Radio();
+        assertEquals(0, radio.getMinSound());
+
+        radio.setMinSound(0);
+        assertEquals(0, radio.getMinSound());
+    }
+
+    @Test
+    public void soundMinus2() {
+        Radio radio = new Radio();
+        assertEquals(0, radio.getMinSound());
+
+        radio.setMinSound(10);
+        assertEquals(9, radio.getMinSound());
+    }
+
+    @Test
+    public void soundMinus3() {
+        Radio radio = new Radio();
+        assertEquals(0, radio.getMinSound());
+
+        radio.setMinSound(5);
+        assertEquals(4, radio.getMinSound());
+    }
+
 }
