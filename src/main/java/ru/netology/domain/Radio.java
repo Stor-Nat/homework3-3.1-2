@@ -2,18 +2,18 @@ package ru.netology.domain;
 
 public class Radio {
     private int currentRadioStation;
-    private int minRadioStation = 0;
-    private int maxRadioStation = 9;
+    private int minRadioStation;
+    private int maxRadioStation;
     private int currentSound;
-    private int minSound = 0;
-    private int maxSound = 10;
+    private int minSound;
+    private int maxSound;
 
 
-    public int getMinRadioStation() {
+    public int getPrevRadioStation() {
         return currentRadioStation;
     }
 
-    public void setMinRadioStation(int currentRadioStation) {
+    public void setPrevRadioStation(int currentRadioStation,int maxRadioStation, int minRadioStation) {
         if (currentRadioStation > maxRadioStation) {
             return;
         }
@@ -26,11 +26,11 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
-    public int getMaxRadioStation() {
+    public int getNextRadioStation() {
         return currentRadioStation;
     }
 
-    public void setMaxRadioStation(int currentRadioStation) {
+    public void setNextRadioStation(int currentRadioStation,int maxRadioStation, int minRadioStation) {
         if (currentRadioStation > maxRadioStation) {
             return;
         }
@@ -43,11 +43,11 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
-    public int getMinSound() {
+    public int getMinusSound() {
         return currentSound;
     }
 
-    public void setMinSound(int currentSound) {
+    public void setMinusSound(int currentSound, int minSound, int maxSound) {
         if (currentSound == minSound) {
             this.currentSound = minSound;
             return;
@@ -61,11 +61,11 @@ public class Radio {
         this.currentSound = currentSound;
     }
 
-    public int getMaxSound() {
+    public int getPlusSound() {
         return currentSound;
     }
 
-    public void setMaxSound(int currentSound) {
+    public void setPlusSound(int currentSound, int minSound, int maxSound) {
         if (currentSound == maxSound) {
             this.currentSound = maxSound;
             return;
