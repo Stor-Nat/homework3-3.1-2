@@ -7,115 +7,80 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    public void radioStationNext1() {
+    public void shouldNext() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getNextRadioStation());
-
-        radio.setNextRadioStation(11, 9, 0);
-        assertEquals(0, radio.getNextRadioStation());
+        radio.setMaxRadioStation(9);
+        radio.setMinRadioStation(0);
+        radio.setCurrentRadioStation(5);
+        radio.radioStationNext();
+        assertEquals(6, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void radioStationNext2() {
+    public void shouldNext0() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getNextRadioStation());
-
-        radio.setNextRadioStation(9, 9, 0);
-        assertEquals(0, radio.getNextRadioStation());
-
-    }
-
-    @Test
-    public void radioStationNext3() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getNextRadioStation());
-
-        radio.setNextRadioStation(5, 9, 0);
-        assertEquals(6, radio.getNextRadioStation());
+        radio.setMaxRadioStation(9);
+        radio.setMinRadioStation(0);
+        radio.setCurrentRadioStation(9);
+        radio.radioStationNext();
+        assertEquals(0, radio.getCurrentRadioStation());
     }
 
 
     @Test
-    public void radioStationPrev1(){
+    public void shouldPrev() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getPrevRadioStation());
-
-        radio.setPrevRadioStation(11, 9, 0);
-        assertEquals(0, radio.getPrevRadioStation());
+        radio.setMaxRadioStation(9);
+        radio.setMinRadioStation(0);
+        radio.setCurrentRadioStation(5);
+        radio.radioStationPrev();
+        assertEquals(4, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void radioStationPrev2(){
+    public void shouldPrev9() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getPrevRadioStation());
-
-        radio.setPrevRadioStation(5, 9, 0);
-        assertEquals(4, radio.getPrevRadioStation());
+        radio.setMaxRadioStation(9);
+        radio.setMinRadioStation(0);
+        radio.setCurrentRadioStation(0);
+        radio.radioStationPrev();
+        assertEquals(9, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void radioStationPrev3(){
+    public void shouldSoundPlus() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getPrevRadioStation());
-
-        radio.setPrevRadioStation(0, 9, 0);
-        assertEquals(9, radio.getPrevRadioStation());
-    }
-
-
-    @Test
-    public void soundPlus1 () {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getPlusSound());
-
-        radio.setPlusSound(10, 0, 10);
-        assertEquals(10, radio.getPlusSound());
+        radio.setMaxSound(10);
+        radio.setCurrentSound(5);
+        radio.soundPlus();
+        assertEquals(6, radio.getCurrentSound());
     }
 
     @Test
-    public void soundPlus2 () {
+    public void shouldNotSoundPlus() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getPlusSound());
-
-        radio.setPlusSound(0, 0, 10);
-        assertEquals(1, radio.getPlusSound());
+        radio.setMaxSound(10);
+        radio.setCurrentSound(10);
+        radio.soundPlus();
+        assertEquals(10, radio.getCurrentSound());
     }
 
     @Test
-    public void soundPlus3 () {
+    public void shouldSoundMinus() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getPlusSound());
-
-        radio.setPlusSound(5, 0, 10);
-        assertEquals(6, radio.getPlusSound());
-    }
-
-
-    @Test
-    public void soundMinus1() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getMinusSound());
-
-        radio.setMinusSound(0, 0,10);
-        assertEquals(0, radio.getMinusSound());
+        radio.setMinSound(0);
+        radio.setCurrentSound(5);
+        radio.soundMinus();
+        assertEquals(4, radio.getCurrentSound());
     }
 
     @Test
-    public void soundMinus2() {
+    public void shouldNotSoundMinus() {
         Radio radio = new Radio();
-        assertEquals(0, radio.getMinusSound());
-
-        radio.setMinusSound(10, 0, 10);
-        assertEquals(9, radio.getMinusSound());
-    }
-
-    @Test
-    public void soundMinus3() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getMinusSound());
-
-        radio.setMinusSound(5, 0, 10);
-        assertEquals(4, radio.getMinusSound());
+        radio.setMinSound(0);
+        radio.setCurrentSound(0);
+        radio.soundMinus();
+        assertEquals(0, radio.getCurrentSound());
     }
 
 }

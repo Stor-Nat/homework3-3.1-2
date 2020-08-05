@@ -8,15 +8,66 @@ public class Radio {
     private int minSound;
     private int maxSound;
 
-
-    public int getPrevRadioStation() {
+    public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
-    public void setPrevRadioStation(int currentRadioStation,int maxRadioStation, int minRadioStation) {
-        if (currentRadioStation > maxRadioStation) {
-            return;
+    public void setCurrentRadioStation(int currentRadioStation) {
+        this.currentRadioStation = currentRadioStation;
+    }
+
+    public int getMinRadioStation() {
+        return minRadioStation;
+    }
+
+    public void setMinRadioStation(int minRadioStation) {
+        this.minRadioStation = minRadioStation;
+    }
+
+    public int getMaxRadioStation() {
+        return maxRadioStation;
+    }
+
+    public void setMaxRadioStation(int maxRadioStation) {
+        this.maxRadioStation = maxRadioStation;
+    }
+
+    public int getCurrentSound() {
+        return currentSound;
+    }
+
+    public void setCurrentSound(int currentSound) {
+        this.currentSound = currentSound;
+    }
+
+    public int getMinSound() {
+        return minSound;
+    }
+
+    public void setMinSound(int minSound) {
+        this.minSound = minSound;
+    }
+
+    public int getMaxSound() {
+        return maxSound;
+    }
+
+    public void setMaxSound(int maxSound) {
+        this.maxSound = maxSound;
+    }
+
+
+    public void radioStationNext() {
+        if (currentRadioStation < maxRadioStation) {
+            currentRadioStation += 1;
         }
+        if (currentRadioStation == maxRadioStation) {
+            currentRadioStation = minRadioStation;
+        }
+        this.currentRadioStation = currentRadioStation;
+    }
+
+    public void radioStationPrev() {
         if (currentRadioStation > minRadioStation) {
             currentRadioStation = currentRadioStation - 1;
         }
@@ -26,56 +77,19 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
-    public int getNextRadioStation() {
-        return currentRadioStation;
-    }
-
-    public void setNextRadioStation(int currentRadioStation,int maxRadioStation, int minRadioStation) {
-        if (currentRadioStation > maxRadioStation) {
-            return;
-        }
-        if (currentRadioStation < maxRadioStation) {
-            currentRadioStation = currentRadioStation + 1;
-        }
-        if (currentRadioStation == maxRadioStation) {
-            currentRadioStation = minRadioStation;
-        }
-        this.currentRadioStation = currentRadioStation;
-    }
-
-    public int getMinusSound() {
-        return currentSound;
-    }
-
-    public void setMinusSound(int currentSound, int minSound, int maxSound) {
-        if (currentSound == minSound) {
-            this.currentSound = minSound;
-            return;
-        }
-        if (currentSound < maxSound) {
-            currentSound = currentSound - 1;
-        }
+    public void soundPlus() {
         if (currentSound == maxSound) {
-            currentSound = currentSound - 1;
+            return;
         }
+        currentSound = currentSound + 1;
         this.currentSound = currentSound;
     }
 
-    public int getPlusSound() {
-        return currentSound;
-    }
-
-    public void setPlusSound(int currentSound, int minSound, int maxSound) {
-        if (currentSound == maxSound) {
-            this.currentSound = maxSound;
+    public void soundMinus() {
+        if (currentSound == minSound) {
             return;
         }
-        if (currentSound > minSound) {
-            currentSound = currentSound + 1;
-        }
-        if (currentSound == minSound) {
-            currentSound = currentSound + 1;
-        }
+        currentSound = currentSound - 1;
         this.currentSound = currentSound;
     }
 
